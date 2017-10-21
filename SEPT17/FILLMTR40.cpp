@@ -1,12 +1,16 @@
+#include <cstdlib>
 #include <stdio.h>
-#include <limits.h>
+#include <unordered_map>
+#include <map>
 #define ll long long
 #define gc getchar_unlocked
 
-ll inp(){
+using namespace std;
+
+int inp(){
 	char c = gc();
 	while(c<'0' || c>'9') c = gc();
-	ll ret = 0;
+	int ret = 0;
 	while(c>='0' && c<='9') {
 		ret = 10 * ret + c - 48;
 		c = gc();
@@ -14,14 +18,16 @@ ll inp(){
 	return ret;
 }
 
-void swap(ll *a, ll *b){
-	ll *temp=b;
+void swap(int &a, int &b){
+	ll temp=b;
 	b=a;
 	a=temp;
 }
 
 int main(){
-	ll t,n,q,i,l1,l2,a,b,val;
+	int t,n,q,i,l1,l2,a,b,val;
+
+	map<pair<int,int>,int> B;
 	bool flag;
 	t=inp();
 	while(t--){
@@ -38,8 +44,10 @@ int main(){
 			b-=1;
 			
 			if(a>b){
-				swap(&a,&b);
+				swap(a,b);
 			}
+			B[make_pair(a,b)]=val;
+			
 			if(a==b && val!=0)
 				flag=false;
 		}

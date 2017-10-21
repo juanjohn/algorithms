@@ -14,35 +14,24 @@ ll inp(){
 	return ret;
 }
 
-void swap(ll *a, ll *b){
-	ll *temp=b;
-	b=a;
-	a=temp;
-}
-
 int main(){
-	ll t,n,q,i,l1,l2,a,b,val;
-	bool flag;
+	ll t,n,p,i,nc,nd,np;
 	t=inp();
 	while(t--){
-		flag=true;
+		nc=nd=0;
 		n=inp();
-		q=inp();
-		while(q--){
-			l1=n;
-			l2=n;
-			a=inp();
-			b=inp();
-			val=inp();
-			a-=1;
-			b-=1;
-			
-			if(a>b){
-				swap(&a,&b);
-			}
-			if(a==b && val!=0)
-				flag=false;
+		p=inp();
+		for(i=0;i<n;i++){
+			np=inp();
+			if(np>=p/2)
+				nc++;
+			else if(np<=p/10)
+				nd++;
 		}
+		if(nc==1 && nd==2)
+			printf("yes\n");
+		else
+			printf("no\n");
 	}
 	return 0;
 }
