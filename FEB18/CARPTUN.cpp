@@ -1,5 +1,8 @@
+#include <limits.h>
 #include <stdio.h>
-#define ll int
+#include <algorithm>
+#define ll long long
+using namespace std;
 
 ll inp(){
 	register ll c = getchar_unlocked();
@@ -17,29 +20,22 @@ ll inp(){
 	return ret;
 }
 
-void inps(char *str, char delim){
-	register char c = 0;
-	register int i = 0;
-	while (c < 33) c=getchar_unlocked();
- 	while (c != delim) {
-		str[i] = c;
-		c=getchar_unlocked();
- 		i++;
-	}
- 	str[i] = '\0';
-}
-
-
 int main(){
-	ll n,k,x,cnt;
-	cnt=0;
-	n=inp();
-	k=inp();
-	while(n--){
-		x=inp();
-		if(x%k==0)
-			cnt++;
+	ll i,j,k,t,n,max,c,d,s;
+	ll time[100000];
+	t=inp();
+	while(t--){
+		n=inp();
+		max=INT_MIN;
+		for(i=0;i<n;i++){
+			time[i]=inp();
+			if(time[i]>max)
+				max=time[i];
+		}
+		c=inp();
+		d=inp();
+		s=inp();
+		printf("%lld.000000000\n", max*(c-1));
 	}
-	printf("%d\n",cnt);
 	return 0;
 }
