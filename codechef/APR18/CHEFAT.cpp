@@ -1,5 +1,3 @@
-//finding power in log n
-
 #include <stdio.h>
 #include <algorithm>
 #define ll long long
@@ -21,28 +19,30 @@ ll inp(){
 	return ret;
 }
 
-ll power( ll x ,ll n){
-	if(n==0)
-		return 1;
-	else{
-		ll tmp = power(x,n/2);
-		if(n%2==1){
-
-			return tmp*tmp*x;
-		}
-		else{
-			return tmp*tmp;
-		}
-	}
-}
-
 int main(){
-	ll i,j,k,t,sum,res,cnt,a,b,c,arr[100000],q,l,r,n,x;
-	t=inp();
-	while(t--){
-		x=inp();
-		n=inp();
-		printf("%lld\n", power(x,n));
+	ll i,j,k,sum,res,cnt,a,b,c,q,l,r,n,op;
+	long double t,arr[100000],prod;
+	n=inp();
+	q=inp();
+	for(i=0;i<n;i++){
+		scanf("%Lf", &arr[i]);
+	}
+	while(q--){
+		op=inp();
+		l=inp();
+		r=inp();
+		prod=1;
+		if(op){
+			scanf("%Lf",&t );
+			for(i=l-1;i<=r-1;i++){
+				arr[i]*=t;
+			}
+		}else{
+			for(i=l-1;i<=r-1;i++){
+				prod*=(1-arr[i]);
+			}
+			printf("%Lf\n", prod);
+		}
 	}
 	return 0;
 }
